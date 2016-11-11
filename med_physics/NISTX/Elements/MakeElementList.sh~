@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm CompoundList.txt
+ls *.nistx >> CompoundList.txt

@@ -1,0 +1,1 @@
+g++ thresholding.cpp -o thresholding -I/mip/include -L/mip/lib64 -lmiputil -limgio

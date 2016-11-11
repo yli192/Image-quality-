@@ -1,0 +1,22 @@
+# polyethelene.nistx
+# Attenuation data for (Polyethylene) obtained directly from the NIST website
+
+# Material Name
+Polyethylene
+
+# Z/A
+0.57033
+
+# Mean exitation energy (eV)
+57.4
+
+# Density
+9.300E-01
+
+# Material composition (Z: weight fraction)
+1: 0.143716
+6: 0.856284
+
+# Attenuation data
+# Each row includes a photon energy, a mass attenuation coefficient, and a mass
+# energy absorption coefficient
