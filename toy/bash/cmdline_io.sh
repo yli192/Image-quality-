@@ -24,3 +24,7 @@ echo $current_dir_fullpath
 if [ -d "$current_dir_fullpath" ]; then
     echo "$current_dir_fullpath exists"
 fi
+#simple calculation
+a=$(expr $ARGV2 / 2 ) #division
+echo $(expr 3 \* $a + 1 ) #multiplication;need the backslash
+echo "$aa"

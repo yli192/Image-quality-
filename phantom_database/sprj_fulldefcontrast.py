@@ -1,5 +1,4 @@
 #! /mip/opt/bin/python
-test
 import sys, os, subprocess
 import numpy as np
 from sys import exit, argv
