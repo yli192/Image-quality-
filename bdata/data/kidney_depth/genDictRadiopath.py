@@ -42,6 +42,9 @@ def read_anttopos (datafile, d):
         line = line.strip().split(" ")
         anterior_atnsum = line[1]
         posterior_atnsum = line[2]
+        ant_pos_atnsum_ratio = line[3]
+        ant_pos_atnsum_sum = line[5]
+        print ant_pos_atnsum_sum
         age = line[0][0:2]
         gender = line[0][2]
         if line[0][3] == 'R':
@@ -57,6 +60,8 @@ def read_anttopos (datafile, d):
         #print age,gender,hp,ks,defloc
         d[age][gender][hp][ks]['anterior_atncoeffsum']=anterior_atnsum
         d[age][gender][hp][ks]['posterior_atncoeffsum']=posterior_atnsum
+        d[age][gender][hp][ks]['ant_pos_atnsum_ratio']=ant_pos_atnsum_ratio
+        d[age][gender][hp][ks]['ant_pos_atnsum_sum']=ant_pos_atnsum_sum
     return d
 
 def main(args):
