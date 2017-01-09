@@ -42,12 +42,21 @@ def main (args):
     ts_class1=np.asarray(ts_class1); ts_class1 = ts_class1.astype(np.float)
     ts_class2=np.asarray(ts_class2); ts_class2 = ts_class2.astype(np.float)
     #print np.mean(ts_class1),np.mean(ts_class2), np.std(ts_class1), np.std(ts_class2),np.mean(ts_class1)-np.mean(ts_class2)
-    noisy_ts = np.random.normal(np.mean(ts_class1), np.std(ts_class1), len(ts_class1))
-    print "std, max and min of added_ts,std, max and min of alpha*added_ts",np.std(noisy_ts),np.max(noisy_ts),np.min(noisy_ts),np.std(noisy_ts*alpha),np.max(noisy_ts*alpha),np.min(noisy_ts*alpha)
-    ts_class1 = ts_class1 + alpha*noisy_ts
+    num_samples=200
+    print "alpha=",alpha, ",samples drawn=",num_samples
+    noisy_ts_all=[]
+    for i in range(num_samples):
+        np.random.seed(seed=i)
+        noisy_ts = np.random.normal(np.mean(ts_class1), np.std(ts_class1), len(ts_class1))
+        noisy_ts_all.append(noisy_ts)
+        #print "std, max and min of added_ts,std, max and min of alpha*added_ts",np.std(noisy_ts),np.max(noisy_ts),np.min(noisy_ts),np.std(noisy_ts*alpha),np.max(noisy_ts*alpha),np.min(noisy_ts*alpha)
+    noisy_ts_mean=np.average(noisy_ts_all,axis=0)
+    print "mean and std of noisy_ts_mean",np.mean(noisy_ts_mean),np.std(noisy_ts_mean),np.mean(noisy_ts),np.std(noisy_ts)
+    print "mean and std of ts_class1,2 before adding noise",np.mean(ts_class1), np.std(ts_class1), np.mean(ts_class2),np.std(ts_class2),np.mean(ts_class1)-np.mean(ts_class2)
+    ts_class1 = ts_class1 + alpha*noisy_ts_mean
     #print np.sum(np.multiply(alpha,noisy_ts))
-    ts_class2 = ts_class2 + alpha*noisy_ts
-    #print np.mean(ts_class1),np.mean(ts_class2), np.std(ts_class1), np.std(ts_class2),np.mean(ts_class1)-np.mean(ts_class2)
-    writeTestStats(ts_class1,ts_class2,outfile)
+    ts_class2 = ts_class2 + alpha*noisy_ts_mean
+    print "mean and std of ts_class1,2 after adding noise",np.mean(ts_class1), np.std(ts_class1), np.mean(ts_class2),np.std(ts_class2),np.mean(ts_class1)-np.mean(ts_class2)
+    #writeTestStats(ts_class1,ts_class2,outfile)
 
 main(sys.argv[1:])
